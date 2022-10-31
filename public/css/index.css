@@ -1,0 +1,10 @@
+.msgReqDiv {
+    border-style: solid;
+    overflow-y:auto;
+    height:15em;
+}
+.msgResDiv {
+    position: fixed;
+    bottom: 0;
+    margin: 10px;
+}
