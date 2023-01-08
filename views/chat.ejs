@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    <link rel="stylesheet" type="text/css"   href="/css/index.css">
+</head>
+<body>
+
+    <div class="msgReqDiv">
+
+    </div>
+
+    <div class="msgResDiv">
+        <input type="text" class="message">
+        <button onclick="sendMessage()">Send Message</button>
+    </div>
+
+    <script>
+
+        const socket = io('http://localhost:3000/')
+
+        socket.on('connection')
+
+        socket.on('message', (data) => {
+            //document.querySelector('h1').innerHTML = data
+
+            const div = document.querySelector(".msgReqDiv");
+
+            const msg = document.createTextNode("Stranger: " + data);
+
+            const newLine = document.createElement("br");
+
+            div.appendChild(msg);
+            div.appendChild(newLine);
+            document.body.appendChild(div);
+
+
+        })
+        const sendMessage = () => {
+            const messageInput = document.querySelector('.message')
+            const message = messageInput.value
+            socket.emit('message', message)
+
+            const div = document.querySelector(".msgReqDiv");
+            const msg = document.createTextNode("You: " + message);
+            const newLine = document.createElement("br");
+            div.appendChild(msg);
+            div.appendChild(newLine);
+            document.body.appendChild(div);
+        }
+
+    </script>
+
+</body>
+</html>

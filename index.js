@@ -15,12 +15,12 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.post('/', (req, res, next) => {
-
+app.post('/chat', (req, res, next) => {
     const username = req.body.username
-    const password = req.body.username
+    const password = req.body.password
     res.cookie('username', username, { maxAge: 90 * 24 * 60 * 60 * 1000 });
-    res.render('index')
+    res.cookie('password', password, { maxAge: 90 * 24 * 60 * 60 * 1000 });
+    res.render('chat')
 })
 
 app.get('/login', (req, res) => {
@@ -29,7 +29,8 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
     res.cookie('username', '', { maxAge: 0 });
-    res.redirect('login')
+    res.cookie('password', '', { maxAge: 0 });
+    res.redirect('/')
 })
     
 server.listen(3000, () => {
