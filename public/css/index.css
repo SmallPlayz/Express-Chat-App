@@ -1,10 +1,6 @@
-.msgReqDiv {
-    border-style: solid;
-    overflow-y:auto;
-    height:15em;
+.top {
+    text-align: center;
 }
-.msgResDiv {
-    position: fixed;
-    bottom: 0;
-    margin: 10px;
+.chatButton {
+    margin-top:10em;
 }
