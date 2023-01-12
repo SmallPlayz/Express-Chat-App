@@ -3,12 +3,17 @@
 <head>
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/chat.css">
+    <title>Chat Now!</title>
 </head>
 <body>
+
+    <h1 class="welcomeText"></h1>
 
     <div class="msgReqDiv">
 
     </div>
+
+    <a href="/"><button type="button" class="homeButton">Home</button></a>
 
     <div class="msgResDiv">
         <input type="text" class="message">
@@ -16,6 +21,18 @@
     </div>
 
     <script>
+
+        const cookieValue = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('username='))
+        ?.split('=')[1];
+
+        welcomeText = document.querySelector(".welcomeText")
+
+        if(cookieValue != null)
+            welcomeText.innerHTML = "Welcome, " + cookieValue + "!"
+        else
+            welcomeText.innerHTML = "Welcome, Stranger!"
 
         const socket = io('http://localhost:3000/')
 
@@ -36,11 +53,6 @@
 
 
         })
-
-const cookieValue = document.cookie
-  .split('; ')
-  .find((row) => row.startsWith('username='))
-  ?.split('=')[1];
 
         const sendMessage = () => {
             const messageInput = document.querySelector('.message')

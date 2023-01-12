@@ -24,7 +24,8 @@ app.post('/chat', (req, res, next) => {
     const password = req.body.password
     res.cookie('username', username, { maxAge: 90 * 24 * 60 * 60 * 1000 });
     res.cookie('password', password, { maxAge: 90 * 24 * 60 * 60 * 1000 });
-    res.render('chat')
+
+    res.render('chat', {username: username})
 })
 
 app.get('/login', (req, res) => {
