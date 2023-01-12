@@ -1,10 +1,18 @@
+body {
+    height: 100%;
+    margin: 0;
+}
+
 .msgReqDiv {
     border-style: solid;
     overflow-y:auto;
-    height:15em;
+    height: 35em;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 10px;
+    padding: 10px;
 }
 .msgResDiv {
-    position: fixed;
+    position:relative;
     bottom: 0;
-    margin: 10px;
 }
